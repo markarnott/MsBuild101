@@ -19,7 +19,8 @@
 	
 	<Message Text="$(AParamProp) (is a parameter property)" />
 
-	<!-- http://msdn.microsoft.com/en-us/library/ms164309.aspx -->
+	<!-- Reserved and Well-Known Properties 
+	    http://msdn.microsoft.com/en-us/library/ms164309.aspx -->
 	<Message Text="$(MSBuildProjectDirectory) (is a reserved property)" />
 	
 	<Message Text="===============" />

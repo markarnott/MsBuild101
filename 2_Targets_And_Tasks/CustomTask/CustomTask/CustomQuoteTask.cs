@@ -11,6 +11,32 @@ namespace CustomTask
      */
     public class CustomQuoteTask : ITask
     {
+        private List<Quotation> FamousQuotes = new List<Quotation>();
+
+        public CustomQuoteTask()
+        {
+            FamousQuotes.Add(new Quotation
+            {
+                Author = "Mark Twain",
+                Saying = "Do the right thing. It will gratify some people and astonish the rest."
+            } );
+            FamousQuotes.Add(new Quotation
+            {
+                Author = "Mark Twain",
+                Saying = "The secret of getting ahead is getting started."
+            } );
+            FamousQuotes.Add(new Quotation
+            {
+                Author = "Abraham Lincoln",
+                Saying = "Give me six hours to chop down a tree and I will spend the first four sharpening the axe."
+            });
+            FamousQuotes.Add(new Quotation
+            {
+                Author = "Abraham Lincoln",
+                Saying = "Most folks are as happy as they make up their minds to be."
+            });
+        }
+
         public IBuildEngine BuildEngine
         {
             get

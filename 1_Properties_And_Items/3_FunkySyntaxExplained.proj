@@ -2,13 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Run" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="1_Properties.proj" />
   <Import Project="2_Items.proj" />
-  <!--
-  Properties have 3 sources
-  1.  Defined in PropertyGroup elements
-  2.  Environment variables
-  3.  /p command line parameters
-  -->
-
+ 
   <Target Name="Run">
     <Message Text="$(HelloMessage) " />
 	
