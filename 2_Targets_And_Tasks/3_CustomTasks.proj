@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Custom" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Task Reference http://msdn.microsoft.com/en-us/library/7z253716.aspx -->
+
+  <UsingTask AssemblyFile="$(MSBuildProjectDirectory)\CustomTask\CustomTask\bin\Debug\CustomTask.dll" TaskName ="FamousQuoteTask" />
+  
+  <Target Name="Custom">
+    <FamousQuoteTask />
+  </Target>
+  
+  <!--  Inline Task -->
+  <UsingTask TaskName="KeepCalm" 
+      TaskFactory="CodeTaskFactory" 
+      AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+      <Task>
+      <Code Type="Fragment" Language="cs">
+        Log.LogMessage("Be thankful.  Your compile errors do not define you.", MessageImportance.High);
+      </Code>
+    </Task>
+  </UsingTask>
+  
+  <Target Name="InlineSaying" AfterTargets="Custom" >
+    <KeepCalm />
+  </Target>
+</Project>

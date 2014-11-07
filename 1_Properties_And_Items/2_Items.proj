@@ -22,10 +22,17 @@
     <Message Text="@(AllProjFiles)" />
   </Target>
   
+  <!-- Items can contain any arbitrary data defined explicitly -->
   <ItemGroup>
     <Arbitrary Include="Fee" />
 	<!-- multiple items can be added with a ; delimited list -->
 	<Arbitrary Include="Fi;Fo" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<Arbitrary Include="Fum" >
+	  <SomeData>Twiddle Dee</SomeData>
+	</Arbitrary>
   </ItemGroup>
 
   <Target Name="Three">
@@ -36,10 +43,4 @@
 	<Message Text="%(Arbitrary.SomeData)" />
   </Target>
   
-  <ItemGroup>
-	<Arbitrary Include="Fum" >
-	  <SomeData>Twiddle Dee</SomeData>
-	</Arbitrary>
-  </ItemGroup>
-
 </Project>

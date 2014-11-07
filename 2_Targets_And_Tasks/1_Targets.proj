@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="One" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Target Name="One">
+<Project ToolsVersion="4.0" DefaultTargets="Three" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- 4 Attribute control target order 
+    1.  DefaultTargets    (on the Project element)
+	2.  BeforeTargets     (Introduced in 4.0)
+	3.  AfterTargets      (Introduced in 4.0)
+	4.  DependsOnTargets  (most common)
+	
+	/t command line parameter overrides Project DefaultTargets
+  -->
+  
+  <Target Name="One" BeforeTargets="Two">
     <Message Text="Target 'One'" />
   </Target>
   
@@ -8,7 +17,12 @@
     <Message Text="Target 'Two'" />
   </Target>
   
-  <Target Name="Three" >
+  <Target Name="Three" DependsOnTargets="Two">
     <Message Text="Target 'Three'" />
   </Target>
+
+  <Target Name="Four" AfterTargets="Three">
+    <Message Text="Target 'Four'" />
+  </Target>
+  
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Build.Framework;
+using Microsoft.Build.Utilities;
 
 namespace CustomTask
 {
@@ -9,22 +10,37 @@ namespace CustomTask
      *  1.  http://mikefourie.github.io/MSBuildExtensionPack/
      *  2.  https://github.com/loresoft/msbuildtasks
      */
-    public class CustomQuoteTask : ITask
+    public class FamousQuoteTask : ITask
     {
+
+        public IBuildEngine BuildEngine { get; set; }
+        public ITaskHost HostObject { get; set; }
+
+        public bool Execute()
+        {
+            var rand = new Random();
+            int i = rand.Next(0, FamousQuotes.Count);
+            string quote = String.Format("{0}\r\n{1}", FamousQuotes[i].Saying, FamousQuotes[i].Author);
+
+            var loggingHelper = new TaskLoggingHelper(this);
+            loggingHelper.LogMessage(MessageImportance.Normal, quote);
+            return true;
+        }
+
         private List<Quotation> FamousQuotes = new List<Quotation>();
 
-        public CustomQuoteTask()
+        public FamousQuoteTask()
         {
             FamousQuotes.Add(new Quotation
             {
                 Author = "Mark Twain",
                 Saying = "Do the right thing. It will gratify some people and astonish the rest."
-            } );
+            });
             FamousQuotes.Add(new Quotation
             {
                 Author = "Mark Twain",
                 Saying = "The secret of getting ahead is getting started."
-            } );
+            });
             FamousQuotes.Add(new Quotation
             {
                 Author = "Abraham Lincoln",
@@ -37,33 +53,5 @@ namespace CustomTask
             });
         }
 
-        public IBuildEngine BuildEngine
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public bool Execute()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ITaskHost HostObject
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
     }
 }

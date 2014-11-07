@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Run" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="MyTarget" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="1_Properties.proj" />
   <Import Project="2_Items.proj" />
  
-  <Target Name="Run">
+  <Target Name="MyTarget">
     <Message Text="$(HelloMessage) " />
-	
-	<Message Text="%(" />
-	
-	<Message Text="$() (is a parameter property)" />
+    <Message Text="@(HelloMessage) " />
+
+    <Message Text="======" />
+    <Message Text="@(Arbitrary)" />
+    <Message Text="$(Arbitrary)" />
+
+    <Message Text="-----" />
+    <Message Text="%(Arbitrary.Identity)" />
+    <Message Text="======" />
+    <Message Text="%(Arbitrary.SomeData)" />
   </Target>
   
-</Project>
+ <!-- Uncomment me to see that Items and Properties
+      can have the same name 
+
+   <PropertyGroup>
+     <Arbitrary>The Arbitrary Property</Arbitrary>
+   </PropertyGroup>
+   <ItemGroup>
+     <HelloMessage Include="Hello Item" />
+   </ItemGroup>
+ -->
+   
+ </Project>

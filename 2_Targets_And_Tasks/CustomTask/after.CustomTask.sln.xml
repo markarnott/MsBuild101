@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- the file extension needs to be changed from .xml to .targets for this to work
+       Run ..\4_TaskMagic.bat to see this in action -->
+  <!-- before.XYZ.sln.targets will import at the beginning of the solution -->
+  <!-- after.XYZ.sln.targets will import at the end of the solution -->
+  <!-- before and after sln targets are hooked by msbuild but are not run in Visual Studio builds -->
+  
+  <Target Name="RunIntegationTests" AfterTargets="Build">
+    <Message Text="Run your integration tests daily" />
+  </Target>
+</Project>

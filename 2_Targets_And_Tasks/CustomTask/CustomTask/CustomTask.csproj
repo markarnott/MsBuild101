@@ -31,12 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Build.Framework" />
+    <Reference Include="Microsoft.Build.Utilities.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomQuoteTask.cs" />
+    <Compile Include="FamousQuoteTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quotation.cs" />
   </ItemGroup>
@@ -48,4 +49,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <Target Name="AfterBuild">
+    <Message Text="The view is amazing from the CSPROJ" Importance="high" />
+  </Target>
+
 </Project>
