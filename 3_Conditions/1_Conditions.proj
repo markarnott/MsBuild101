@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Tell" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Conditions 
+  -->
+  <PropertyGroup Condition="$(MyProp) == 'Something'">
+    <ConditionalProp>Prop1</ConditionalProp>
+  </PropertyGroup>
+  
+
+  <Target Name="Show" Condition="$(MyProp) == 'Something'">
+    <Message Text="== Inside Show Target ==" />
+  </Target>
+
+  <Target Name="Tell" DependsOnTargets="Show">
+    <Message Text="ConditionalProp is - $(ConditionalProp) -" />
+    
+    <Message Text="Conditional Message" Condition="$(MyProp) == 'Something'" />
+    
+  </Target>
+  
+</Project>

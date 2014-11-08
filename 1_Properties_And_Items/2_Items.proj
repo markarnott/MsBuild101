@@ -3,7 +3,7 @@
   
   <!--
     Item groups are most often used for collections of files
-	but they can be a list of any data
+    but they can be a list of any data
   -->
   <ItemGroup>
     <LocalProjFiles Include="*.proj" />
@@ -25,22 +25,25 @@
   <!-- Items can contain any arbitrary data defined explicitly -->
   <ItemGroup>
     <Arbitrary Include="Fee" />
-	<!-- multiple items can be added with a ; delimited list -->
-	<Arbitrary Include="Fi;Fo" />
+    <!-- multiple items can be added with a ; delimited list -->
+    <Arbitrary Include="Fi;Fo" />
   </ItemGroup>
 
   <ItemGroup>
-	<Arbitrary Include="Fum" >
-	  <SomeData>Twiddle Dee</SomeData>
-	</Arbitrary>
+    <Arbitrary Include="Fum" >
+      <SomeData>Twiddle Dee</SomeData>
+    </Arbitrary>
   </ItemGroup>
 
-  <Target Name="Three">
+  <Target Name="Three" BeforeTargets="Four">
     <Message Text="@(Arbitrary)" />
-	<Message Text="-----" />
+  </Target>
+
+  <Target Name="Four">
+    <Message Text="-----" />
     <Message Text="%(Arbitrary.Identity)" />
-	<Message Text="======" />
-	<Message Text="%(Arbitrary.SomeData)" />
+    <Message Text="======" />
+    <Message Text="%(Arbitrary.SomeData)" />
   </Target>
   
 </Project>
